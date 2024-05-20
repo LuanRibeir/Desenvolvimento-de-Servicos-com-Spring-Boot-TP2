@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tp2.tp2.model.Product;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,4 +55,18 @@ public class ProductController {
 
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Product> delete(@PathVariable int id) {
+        Optional<Product> product = products.stream()
+                .filter(p -> p.getId() == id)
+                .findFirst();
+        if (product.isPresent()) {
+            products.remove(product.get());
+            return ResponseEntity.ok(product.get());
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
 }
