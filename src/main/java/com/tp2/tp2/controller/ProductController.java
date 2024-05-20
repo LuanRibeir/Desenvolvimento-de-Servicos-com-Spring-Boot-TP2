@@ -7,6 +7,7 @@ import com.tp2.tp2.model.Product;
 
 import java.util.List;
 import java.util.ArrayList;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/product")
@@ -15,5 +16,9 @@ public class ProductController {
             new Product(0, "Cerveja", 5),
             new Product(1, "Cerveja", 5)));
 
+    @GetMapping("/")
+    public List<Product> allProducts() {
+        return products;
+    }
 
 }
