@@ -31,7 +31,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product singleProduct(@RequestParam int id) {
+    public Product singleProduct(@PathVariable int id) {
         return products.stream().filter(product -> product.getId() == id)
                 .findFirst()
                 .orElse(null);
