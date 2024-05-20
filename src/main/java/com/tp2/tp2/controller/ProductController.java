@@ -8,6 +8,7 @@ import com.tp2.tp2.model.Product;
 import java.util.List;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/product")
