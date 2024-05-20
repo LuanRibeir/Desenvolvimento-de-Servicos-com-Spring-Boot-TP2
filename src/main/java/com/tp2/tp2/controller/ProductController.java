@@ -21,4 +21,11 @@ public class ProductController {
         return products;
     }
 
+    @GetMapping("/{id}")
+    public Product singleProduct(@RequestParam int id) {
+        return products.stream().filter(product -> product.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+    }
 }
